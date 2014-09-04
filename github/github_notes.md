@@ -109,6 +109,7 @@ The HEAD is a pointer that holds your position within all your different commits
 
 
 1.14 Staged Differences
+-----------------------
 Another great use for diff is looking at changes within files that have already been staged. Remember, staged files are files we have told git that are ready to be committed.
 
 Commit Etiquette:
@@ -120,6 +121,17 @@ Now go ahead and run git diff with the --staged option to see the changes you ju
 
 
 1.16 Resetting the Stage
+------------------------
 You can unstage files by using the git reset command. Go ahead and remove octofamily/octodog.txt.
 
 ```git reset octofamily/octodog.txt```
+
+
+1.17 Undo
+----------
+git reset did a great job of unstaging octodog.txt, but you'll notice that he's still there. He's just not staged anymore. It would be great if we could go back to how things were before octodog came around and ruined the party.
+
+Files can be changed back to how they were at the last commit by using the command: ```git checkout -- <target>```
+
+####The '--'
+So you may be wondering, why do I have to use this ```'--'``` thing? ```git checkout``` seems to work fine without it. It's simply promising the command line that there are no more options after the ```'--'```. This way if you happen to have a branch named ```octocat.txt```, it will still revert the file, instead of switching to the branch of the same name.
