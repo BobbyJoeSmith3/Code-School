@@ -3,10 +3,10 @@
 
 Git allows groups of people to work on the same documents (often code) at the same time, and without stepping on each other's toes. It's a distributed version control system.
 
-Directory:
+**Directory:**
 A folder used for storing multiple files.
 
-Repository:
+**Repository:**
 A directory where Git has been initialized to start version controlling your files.
 
 
@@ -14,20 +14,21 @@ A directory where Git has been initialized to start version controlling your fil
 -----------------------
 Good job! As Git just told us, our "octobox" directory now has an empty repository in /.git/. The repository is a hidden directory where Git operates.
 
-The .git directory
+**The .git directory**
 On the left you'll notice a .git directory. It's usually hidden but we're showing it to you for convenience.
 If you click it you'll notice it has all sorts of directories and files inside it. You'll rarely ever need to do anything inside here but it's the guts of Git, where all the magic happens.
 
 
-add all:
+**add all:**
 You can also type ```git add -A .``` where the dot stands for the current directory, so everything in and beneath it is added. The ```-A``` ensures even file deletions are included.
-git reset:
+**git reset:**
 You can use ```git reset <filename>``` to remove a file or files from the staging area.
 
 
-Staging Area:
+**Staging Area:**
 A place where we can group files together before we "commit" them to Git.
-Commit
+
+**Commit**
 A "commit" is a snapshot of our repository. This way if we ever need to look back at the changes we've made (or if someone else does), we will see a nice timeline of all changes.
 
 
@@ -44,10 +45,10 @@ Great! You also can use wildcards if you want to add many files of the same type
 
 ```git add '*.txt'```
 
-Wildcards:
+**Wildcards:**
 We need quotes so that Git will receive the wildcard before our shell can interfere with it. Without quotes our shell will only execute the wildcard search within the current directory. Git will receive the list of files the shell found instead of the wildcard and it will not be able to add the files inside of the octofamily directory.
 
-Check all the things!
+**Check all the things!**
 When using wildcards you want to be extra careful when doing commits. Make sure to check what files and folders are staged by using git status before you do the actual commit. This way you can be sure you're committing only the things you want.
 
 
@@ -57,7 +58,7 @@ So we've made a few commits. Now let's browse them to see what we changed.
 
 Fortunately for us, there's git log. Think of Git's log as a journal that remembers all the changes we've committed so far, in the order we committed them.
 
-More useful logs:
+**More useful logs:**
 Use ```git log --summary``` to see more information for each commit. You can see where new files were added for the first time or where files were deleted. It's a good overview of what's going on in the project.
 
 
@@ -67,7 +68,7 @@ We've gone ahead and created a new empty GitHub repository for you to use with T
 
 This command takes a remote name and a repository URL, which in your case is https://github.com/try-git/try_git.git.
 
-git remote:
+**git remote:**
 Git doesn't care what you name your remotes, but it's typical to name your main one origin.
 It's also a good idea for your main repository to be on a remote server like GitHub in case your machine is lost at sea during a transatlantic boat cruise or crushed by three monkey statues during an earthquake.
 
@@ -78,7 +79,7 @@ The push command tells Git where to put our commits when we're ready, and boy we
 
 The name of our remote is origin and the default local branch name is master. The -u tells Git to remember the parameters, so that next time we can simply run git push and Git will know what to do.
 
-Cool Stuff:
+**Cool Stuff:**
 When you start to get the hang of git you can do some really cool things with hooks when you push.
 For example, you can upload directly to a webserver whenever you push to your master remote instead of having to upload your site with an ftp client. Check out Customizing Git - Git Hooks for more information.
 
@@ -91,7 +92,7 @@ We can check for changes on our GitHub repository and pull down any new changes 
 
 ```git pull origin master```
 
-git stash:
+**git stash:**
 Sometimes when you go to pull you may have changes you don't want to commit just yet. One option you have, other than commiting, is to stash the changes.
 Use the command 'git stash' to stash your changes, and 'git stash apply' to re-apply your changes after your pull.
 
@@ -104,7 +105,7 @@ In this case we want the diff of our most recent commit, which we can refer to u
 
 ```git diff HEAD```
 
-HEAD
+**HEAD**
 The HEAD is a pointer that holds your position within all your different commits. By default HEAD points to your most recent commit, so it can be used as a quick way to reference that commit without having to look up the SHA.
 
 
@@ -112,7 +113,7 @@ The HEAD is a pointer that holds your position within all your different commits
 -----------------------
 Another great use for diff is looking at changes within files that have already been staged. Remember, staged files are files we have told git that are ready to be committed.
 
-Commit Etiquette:
+**Commit Etiquette:**
 You want to try to keep related changes together in separate commits. Using 'git diff' gives you a good overview of changes you have made and lets you add files or directories one at a time and commit them separately.
 
 Now go ahead and run git diff with the --staged option to see the changes you just staged. You should see that octodog.txt was created.
@@ -133,5 +134,36 @@ git reset did a great job of unstaging octodog.txt, but you'll notice that he's 
 
 Files can be changed back to how they were at the last commit by using the command: ```git checkout -- <target>```
 
-####The '--'
+**The '--'**
 So you may be wondering, why do I have to use this ```'--'``` thing? ```git checkout``` seems to work fine without it. It's simply promising the command line that there are no more options after the ```'--'```. This way if you happen to have a branch named ```octocat.txt```, it will still revert the file, instead of switching to the branch of the same name.
+
+
+1.18 Branching Out
+------------------
+When developers are working on a feature or bug they'll often create a copy (aka. branch) of their code they can make separate commits to. Then when they're done they can merge this branch back into their main master branch.
+
+We want to remove all these pesky octocats, so let's create a branch called clean_up, where we'll do all the work:
+
+```git branch clean_up````
+
+**Branching**
+Branches are what naturally happens when you want to work on multiple features at the same time. You wouldn't want to end up with a master branch which has Feature A half done and Feature B half done.
+
+Rather you'd separate the code base into two "snapshots" (branches) and work on and commit to them separately. As soon as one was ready, you might merge this branch back into the master branch and push it to the remote server.
+
+
+1.19 Switching Branches
+-----------------------
+Great! Now if you type ```git branch``` you'll see two local branches: a main branch named **master** and your new branch named **clean_up**.
+
+You can switch branches using the ```git checkout <branch>``` command. Try it now to switch to the clean_up branch:
+
+```git checkout clean_up```
+
+**All at Once**
+You can use:
+```git checkout -b new_branch```
+to checkout and create a branch at the same time. This is the same thing as doing:
+
+```git branch new_branch```
+```git checkout new_branch```
