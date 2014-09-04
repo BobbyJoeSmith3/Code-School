@@ -167,3 +167,80 @@ to checkout and create a branch at the same time. This is the same thing as doin
 
 ```git branch new_branch```
 ```git checkout new_branch```
+
+
+1.20 Removing All The Things
+----------------------------
+Ok, so you're in the **clean_up** branch. You can finally remove all those pesky octocats by using the ```git rm``` command which will not only remove the actual files from disk, but will also stage the removal of the files for us.
+
+You're going to want to use a wildcard again to get all the octocats in one sweep, go ahead and run:
+
+```git rm '*.txt'```
+
+**Remove all the things!**
+Removing one file is great and all, but what if you want to remove an entire folder? You can use the recursive option on git rm:
+
+```git rm -r folder_of_cats```
+
+This will recursively remove all folders and files from the given directory.
+
+
+1.21 Commiting Branch Changes
+-----------------------------
+Now that you've removed all the cats you'll need to commit your changes.
+
+Feel free to run ```git status``` to check the changes you're about to commit.
+
+```git commit -m "Remove all the cats"```
+
+**The '-a' option**
+If you happen to delete a file without using ```'git rm'``` you'll find that you still have to ```'git rm'``` the deleted files from the working tree. You can save this step by using the ```'-a'``` option on ```'git commit'```, which auto removes deleted files with the commit.
+
+```git commit -am "Delete stuff"```
+
+
+1.22 Switching Back to master
+-----------------------------
+Great, you're almost finished. You just need to switch back to the **master** branch so you can copy (or **merge**) your changes from the **clean_up** branch back into the **master** branch.
+
+Go ahead and checkout the master branch:
+
+```git checkout master```
+
+**Pull Requests**
+If you're hosting your repo on GitHub, you can do something called a pull request.
+
+A pull request allows the boss of the project to look through your changes and make comments before deciding to merge in the change. It's a really great feature that is used all the time for remote workers and open-source projects.
+
+
+1.23 Preparing to Merge
+-----------------------
+Alrighty, the moment has come when you have to merge your changes from the **clean_up** branch into the **master** branch. 
+
+We're already on the **master** branch, so we just need to tell Git to merge the **clean_up** branch into it:
+
+```git merge clean_up```
+
+**Merge Conflicts**
+Merge Conflicts can occur when changes are made to a file at the same time. A lot of people get really scared when a conflict happens, but fear not! They aren't that scary, you just need to decide which code to keep.
+
+
+1.24 Keeping Things Clean
+-------------------------
+Congratulations! You just accomplished your first successful bugfix and merge. All that's left to do is clean up after yourself. Since you're done with the **clean_up** branch you don't need it anymore.
+
+You can use ```git branch -d <branch name>``` to delete a branch. Go ahead and delete the clean_up branch now:
+
+```git branch -d clean_up```
+
+**Force delete**
+What if you have been working on a feature branch and you decide you really don't want this feature anymore? You might decide to delete the branch since you're scrapping the idea. You'll notice that ```git branch -d bad_feature``` doesn't work. This is because ```-d``` won't let you delete something that hasn't been merged.
+
+You can either add the ```--force (-f)``` option or use ```-D``` which combines ```-d -f``` together into one command.
+
+**Learning more about Git**
+We only scratched the surface of Git in this course. There is so much more you can do with it. Check out the **Git documentation** for a full list of functions.
+
+**The Pro Git book**, by Scott Chacon, is an excellent resource to teach you the inner workings of Git.
+
+**help.github** and GitHub Training are also great for anything related to Git in general and using Git with GitHub.
