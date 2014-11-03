@@ -362,6 +362,7 @@ Review the git timeline history:
 Level 2 - Staging and Remotes
 -----------------------------
 ###Commands
+#####Staging
 Show unstaged differences since last commit:
 
 ```$ git diff ```
@@ -406,3 +407,45 @@ Undo last two commits and all changes:
 ```$ git reset --hard HEAD^^```
 
 keep adding a ```^``` for each commit you want to blow away.
+
+#####Remote Repositories
+Link our local repository to a remote repository:
+
+```$ git remote add origin <repo url>```
+
+Get a list of all of the remote repositories our local repository has access to:
+
+```$ git remote -v```
+
+Push files from local repository to remote repository and have the computer remember the path:
+
+```$ git push -u <remote name> <branch>```
+
+To remove remotes:
+```$ got remote rm <name>```
+
+
+#####Concepts
+When we are editing our files, staging, and committing them, we are making the changes on our own local repository. To get these changes up to a repository that anyone else can access, we need to push and pull changes to a remote repository. When dealing with remote repositories, it is all about the ```git remote``` command.
+
+Git doesn't take care of access control for you, meaning, it doesn't allow you to specify who has access to the remote repository. In order to implement access control, some additional software is needed. If you want to use a hosted access control software, you can use Github or Bitbucket. If you want a self managed solution, you can use Gitosis or Gitorious. 
+
+If we wanted to store our remote repository on github, we would create a github account, and then create a new repository on github. Once we create a repository on github, github will give us a url that refers to that repository.
+
+To push to github, we are first going to have to run ```git remote add origin <repository url>```. ```add``` creates a new remote repository, ```origin``` is the name of the remote, and the url is the address of the remote repository. We can give the remote any name, but usually we refer to our "canonical repository" as "origin". Then, we are going to push the files from the local repository to the remote with ```$ git push -u origin master```. ```-u``` tells the computer to remember push settings so next time you don't have to specify the name and the branch. ```origin``` is the name of the remote repository. ```master``` is the local branch to push. Github will ask for your username and password. If you want to cache your username and password so that you don't haave to enter it everytime you push, got to https://help.github.com/articles/set-up-git .
+
+To pull changes down from a remote repository and sync up your local repository, use ```$ git pull```. You will want to use this when changes have been made to the remote repository and you want your local repository to be up to date.
+
+We have github as our canonical remote called "origin", but it is not uncommon to have multiple remotes with a project. We might have a test server that runs our tests for us that we will occassionally push our repo over there. Or we might have a hosting provider that has our production code in it. To add new remotes follow the steps above and use the name that corrisponds to appropriate remote server.
+
+```$ git remote add <name> <address>```
+
+An example of removing remote repositories would be:
+
+```$ git remote rm origin```
+
+An example of pushing to a remote would be:
+
+```$ git push -u origin master```
+
+Don't use any of the commands the roll back commits after you have pushed. You only want to do those before you've pushed, because if do so and then make the changes locally it's kind of like changing history, which is dangerous to do when working on a project.
