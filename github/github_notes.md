@@ -252,3 +252,48 @@ GIT REAL LEVEL 1
 Background
 ----------
 Github is a "Distributed Version Control System" (DVCS) created to help teams merge changes to a project, as well as create a timeline of changes to said project. Previously, teams used to transfer computer files using a File Transfer Protocol (FTP) to a central repository. This would cause programmers working on the same files to accidentally overwrite each others' code. Also, since all of the code was stored on a central repository, coders ran the risk of losing all of their work if the repository crashed or was deleted. In a DVSC setup, everyone gets a copy of the master repository on their own server, reducing the risk of losing everything in the repository if something were to happen to one of the repositories.
+
+Level 1 - GIT BASICS
+--------------------
+
+###Git Help
+You can access documentation on github commands right in the command line by typing:
+'''$ git help'''
+
+You can pass in any git command with '''git help''' and narrow the search results. For example, if you want a quick view of the configuration commands type:
+'''$ git help config''' 
+
+###Setting Up Git
+To set up who gets credit for changes:
+'''$ git config --global user.name "Bobby Joe Smith III"'''
+What email you use:
+'''$ git config --global user.email "me@email.com"'''
+Command line colors:
+'''$ git config --global color.ui true'''
+
+###Starting A Repository
+1. Navigate to the directory where you want to store your empty git repository
+2. Initialize the git repository by typing '''git init''' into the command line. A hidden .git directory containing git metadata will be stored in the directory in which you initialized git.
+
+###Git Work Flow
+1. Create or modify files
+2. Add new or modified files to the staging area. This will tell the repository to start tracking any files that weren't previously being tracked for changes. Adding files to the staging area are also a way to group together changes made to the repository that you want logged on the project timeline together. 
+3. Commit changes. This creates a snapshot of the current state of all of the changes to the files added on the stage. These snapshots will be logged on the project timeline. Always write your commit message in the past tense so people can understand what merging that commit will do to their code.
+
+###Additional Commands
+You can add multiple files to the staging area using a few different methods.
+List all of the files you want to add to the staging area with:
+'''$ git add file1.txt file2.txt'''
+Check for and add all new or modified files with: 
+'''$ git add --all'''
+You can use a wildcard to add all of the files of a certain type (.txt files in example) using:
+'''$ git add *.txt'''
+Add all files of a certain type (ex. .txt) in a specific directory (ex. docs):
+'''$ git add docs/*.txt'''
+Add all files in a specific directory (ex. docs):
+'''$ git add docs/'''
+Add all files of a specific type (ex. txt) in the entire project:
+'''git add "*.txt"'''
+
+Review the git timeline history:
+'''$ git log'''
