@@ -253,9 +253,12 @@ Level 1 - GIT BASICS
 --------------------
 ###Commands
 Access documentation on github commands:
+
 ```$ git help```
+
 Narrow ```git help``` search results:
 ```$ git help config```
+
 To set up who gets credit for changes:
 ```$ git config --global user.name "Bobby Joe Smith III"```
 What email you use:
