@@ -255,15 +255,43 @@ Github is a "Distributed Version Control System" (DVCS) created to help teams me
 
 Level 1 - GIT BASICS
 --------------------
+###Commands
+Access documentation on github commands:
+'''$ git help'''
+Narrow '''git help''' search results:
+'''$ git help config'''
+To set up who gets credit for changes:
+'''$ git config --global user.name "Bobby Joe Smith III"'''
+What email you use:
+'''$ git config --global user.email "me@email.com"'''
+Command line colors:
+'''$ git config --global color.ui true'''
+You can add multiple files to the staging area using a few different methods.
+List all of the files you want to add to the staging area with:
+'''$ git add file1.txt file2.txt'''
+Check for and add all new or modified files with: 
+'''$ git add --all'''
+You can use a wildcard to add all of the files of a certain type (.txt files in example) using:
+'''$ git add *.txt'''
+Add all files of a certain type (ex. .txt) in a specific directory (ex. docs):
+'''$ git add docs/*.txt'''
+Add all files in a specific directory (ex. docs):
+'''$ git add docs/'''
+Add all files of a specific type (ex. txt) in the entire project:
+'''git add "*.txt"'''
+Review the git timeline history:
+'''$ git log'''
 
-###Git Help
+
+###Concepts
+#####Git Help
 You can access documentation on github commands right in the command line by typing:
 '''$ git help'''
 
 You can pass in any git command with '''git help''' and narrow the search results. For example, if you want a quick view of the configuration commands type:
 '''$ git help config''' 
 
-###Setting Up Git
+#####Setting Up Git
 To set up who gets credit for changes:
 '''$ git config --global user.name "Bobby Joe Smith III"'''
 What email you use:
@@ -271,16 +299,16 @@ What email you use:
 Command line colors:
 '''$ git config --global color.ui true'''
 
-###Starting A Repository
+#####Starting A Repository
 1. Navigate to the directory where you want to store your empty git repository
 2. Initialize the git repository by typing '''git init''' into the command line. A hidden .git directory containing git metadata will be stored in the directory in which you initialized git.
 
-###Git Work Flow
+#####Git Work Flow
 1. Create or modify files
 2. Add new or modified files to the staging area. This will tell the repository to start tracking any files that weren't previously being tracked for changes. Adding files to the staging area are also a way to group together changes made to the repository that you want logged on the project timeline together. 
 3. Commit changes. This creates a snapshot of the current state of all of the changes to the files added on the stage. These snapshots will be logged on the project timeline. Always write your commit message in the past tense so people can understand what merging that commit will do to their code.
 
-###Additional Commands
+#####Additional Commands
 You can add multiple files to the staging area using a few different methods.
 List all of the files you want to add to the staging area with:
 '''$ git add file1.txt file2.txt'''
@@ -297,3 +325,31 @@ Add all files of a specific type (ex. txt) in the entire project:
 
 Review the git timeline history:
 '''$ git log'''
+
+
+Level 2 - Staging and Remotes
+-----------------------------
+###Commands
+Show unstaged differences since last commit:
+'''$ git diff '''
+Show staged differences since last commit:
+'''$ git diff --staged'''
+Unstage a file:
+'''$ git reset HEAD <filename>'''
+'''HEAD''' refers to the last command on the timeline we are on.
+Reset an unstaged file that has been modified to the last state it was in before it was modified:
+'''$ git checkout -- <filename>'''
+Add AND commit any modified tracked files:
+'''$ git commit -a -m "commit message"'''
+ This will not add any files that are not already being tracked.
+ Undo last commit and move everything from the last commit back into staging:
+ '''$ git reset --soft HEAD^'''
+ Add files to last commit:
+ '''$ git add <file>''' add the file you want to add to the last commmit and,
+ '''$ git commit --amend -m "Modify readme and add file.txt."'''
+ If we specify a new commit message it will overwrite our previous commit message.
+ Completely undo last commit and all changes:
+ '''$ git reset --hard HEAD^'''
+ Undo last two commits and all changes:
+ '''$ git reset --hard HEAD^^'''
+ keep adding a '''^''' for each commit you want to blow away.
