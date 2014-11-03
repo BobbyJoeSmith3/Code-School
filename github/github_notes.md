@@ -257,29 +257,51 @@ Access documentation on github commands:
 ```$ git help```
 
 Narrow ```git help``` search results:
+
 ```$ git help config```
 
 To set up who gets credit for changes:
+
 ```$ git config --global user.name "Bobby Joe Smith III"```
+
 What email you use:
+
 ```$ git config --global user.email "me@email.com"```
+
 Command line colors:
+
 ```$ git config --global color.ui true```
-You can add multiple files to the staging area using a few different methods.
+
+**You can add multiple files to the staging area using a few different methods.**
+
 List all of the files you want to add to the staging area with:
+
 ```$ git add file1.txt file2.txt```
+
 Check for and add all new or modified files with: 
+
 ```$ git add --all```
+
 You can use a wildcard to add all of the files of a certain type (.txt files in example) using:
+
 ```$ git add *.txt```
+
 Add all files of a certain type (ex. .txt) in a specific directory (ex. docs):
+
 ```$ git add docs/*.txt```
+
 Add all files in a specific directory (ex. docs):
+
 ```$ git add docs/```
+
 Add all files of a specific type (ex. txt) in the entire project:
+
 ```git add "*.txt"```
+
 Review the git timeline history:
+
 ```$ git log```
+
 
 
 ###Concepts
@@ -296,8 +318,10 @@ You can pass in any git command with ```git help``` and narrow the search result
 #####Setting Up Git
 To set up who gets credit for changes:
 ```$ git config --global user.name "Bobby Joe Smith III"```
+
 What email you use:
 ```$ git config --global user.email "me@email.com"```
+
 Command line colors:
 ```$ git config --global color.ui true```
 
@@ -312,16 +336,22 @@ Command line colors:
 
 #####Additional Commands
 You can add multiple files to the staging area using a few different methods.
+
 List all of the files you want to add to the staging area with:
 ```$ git add file1.txt file2.txt```
+
 Check for and add all new or modified files with: 
 ```$ git add --all```
+
 You can use a wildcard to add all of the files of a certain type (.txt files in example) using:
 ```$ git add *.txt```
+
 Add all files of a certain type (ex. .txt) in a specific directory (ex. docs):
 ```$ git add docs/*.txt```
+
 Add all files in a specific directory (ex. docs):
 ```$ git add docs/```
+
 Add all files of a specific type (ex. txt) in the entire project:
 ```git add "*.txt"```
 
@@ -333,25 +363,46 @@ Level 2 - Staging and Remotes
 -----------------------------
 ###Commands
 Show unstaged differences since last commit:
+
 ```$ git diff ```
+
 Show staged differences since last commit:
+
 ```$ git diff --staged```
+
 Unstage a file:
+
 ```$ git reset HEAD <filename>```
+
 ```HEAD``` refers to the last command on the timeline we are on.
+
 Reset an unstaged file that has been modified to the last state it was in before it was modified:
+
 ```$ git checkout -- <filename>```
+
 Add AND commit any modified tracked files:
+
 ```$ git commit -a -m "commit message"```
+
 This will not add any files that are not already being tracked.
+
 Undo last commit and move everything from the last commit back into staging:
+
 ```$ git reset --soft HEAD^```
+
 Add files to last commit:
+
 ```$ git add <file>``` add the file you want to add to the last commmit and,
 ```$ git commit --amend -m "Modify readme and add file.txt."```
+
 If we specify a new commit message it will overwrite our previous commit message.
+
 Completely undo last commit and all changes:
+
 ```$ git reset --hard HEAD^```
+
 Undo last two commits and all changes:
+
 ```$ git reset --hard HEAD^^```
+
 keep adding a ```^``` for each commit you want to blow away.
