@@ -249,59 +249,58 @@ We only scratched the surface of Git in this course. There is so much more you c
 GIT REAL LEVEL 1
 ================
 
-Background
-----------
-Github is a "Distributed Version Control System" (DVCS) created to help teams merge changes to a project, as well as create a timeline of changes to said project. Previously, teams used to transfer computer files using a File Transfer Protocol (FTP) to a central repository. This would cause programmers working on the same files to accidentally overwrite each others' code. Also, since all of the code was stored on a central repository, coders ran the risk of losing all of their work if the repository crashed or was deleted. In a DVSC setup, everyone gets a copy of the master repository on their own server, reducing the risk of losing everything in the repository if something were to happen to one of the repositories.
-
 Level 1 - GIT BASICS
 --------------------
 ###Commands
 Access documentation on github commands:
-'''$ git help'''
-Narrow '''git help''' search results:
-'''$ git help config'''
+```$ git help```
+Narrow ```git help``` search results:
+```$ git help config```
 To set up who gets credit for changes:
-'''$ git config --global user.name "Bobby Joe Smith III"'''
+```$ git config --global user.name "Bobby Joe Smith III"```
 What email you use:
-'''$ git config --global user.email "me@email.com"'''
+```$ git config --global user.email "me@email.com"```
 Command line colors:
-'''$ git config --global color.ui true'''
+```$ git config --global color.ui true```
 You can add multiple files to the staging area using a few different methods.
 List all of the files you want to add to the staging area with:
-'''$ git add file1.txt file2.txt'''
+```$ git add file1.txt file2.txt```
 Check for and add all new or modified files with: 
-'''$ git add --all'''
+```$ git add --all```
 You can use a wildcard to add all of the files of a certain type (.txt files in example) using:
-'''$ git add *.txt'''
+```$ git add *.txt```
 Add all files of a certain type (ex. .txt) in a specific directory (ex. docs):
-'''$ git add docs/*.txt'''
+```$ git add docs/*.txt```
 Add all files in a specific directory (ex. docs):
-'''$ git add docs/'''
+```$ git add docs/```
 Add all files of a specific type (ex. txt) in the entire project:
-'''git add "*.txt"'''
+```git add "*.txt"```
 Review the git timeline history:
-'''$ git log'''
+```$ git log```
 
 
 ###Concepts
+#####Background
+Github is a "Distributed Version Control System" (DVCS) created to help teams merge changes to a project, as well as create a timeline of changes to said project. Previously, teams used to transfer computer files using a File Transfer Protocol (FTP) to a central repository. This would cause programmers working on the same files to accidentally overwrite each others' code. Also, since all of the code was stored on a central repository, coders ran the risk of losing all of their work if the repository crashed or was deleted. In a DVSC setup, everyone gets a copy of the master repository on their own server, reducing the risk of losing everything in the repository if something were to happen to one of the repositories.
+
 #####Git Help
 You can access documentation on github commands right in the command line by typing:
-'''$ git help'''
+```$ git help```
 
-You can pass in any git command with '''git help''' and narrow the search results. For example, if you want a quick view of the configuration commands type:
-'''$ git help config''' 
+You can pass in any git command with ```git help``` and narrow the search results. For example, if you want a quick view of the configuration commands type:
+```$ git help config``` 
 
 #####Setting Up Git
 To set up who gets credit for changes:
-'''$ git config --global user.name "Bobby Joe Smith III"'''
+```$ git config --global user.name "Bobby Joe Smith III"```
 What email you use:
-'''$ git config --global user.email "me@email.com"'''
+```$ git config --global user.email "me@email.com"```
 Command line colors:
-'''$ git config --global color.ui true'''
+```$ git config --global color.ui true```
 
 #####Starting A Repository
 1. Navigate to the directory where you want to store your empty git repository
-2. Initialize the git repository by typing '''git init''' into the command line. A hidden .git directory containing git metadata will be stored in the directory in which you initialized git.
+2. Initialize the git repository by typing ```git init``` into the command line. A hidden .git directory containing git metadata will be stored in the directory in which you initialized git.
 
 #####Git Work Flow
 1. Create or modify files
@@ -311,45 +310,45 @@ Command line colors:
 #####Additional Commands
 You can add multiple files to the staging area using a few different methods.
 List all of the files you want to add to the staging area with:
-'''$ git add file1.txt file2.txt'''
+```$ git add file1.txt file2.txt```
 Check for and add all new or modified files with: 
-'''$ git add --all'''
+```$ git add --all```
 You can use a wildcard to add all of the files of a certain type (.txt files in example) using:
-'''$ git add *.txt'''
+```$ git add *.txt```
 Add all files of a certain type (ex. .txt) in a specific directory (ex. docs):
-'''$ git add docs/*.txt'''
+```$ git add docs/*.txt```
 Add all files in a specific directory (ex. docs):
-'''$ git add docs/'''
+```$ git add docs/```
 Add all files of a specific type (ex. txt) in the entire project:
-'''git add "*.txt"'''
+```git add "*.txt"```
 
 Review the git timeline history:
-'''$ git log'''
+```$ git log```
 
 
 Level 2 - Staging and Remotes
 -----------------------------
 ###Commands
 Show unstaged differences since last commit:
-'''$ git diff '''
+```$ git diff ```
 Show staged differences since last commit:
-'''$ git diff --staged'''
+```$ git diff --staged```
 Unstage a file:
-'''$ git reset HEAD <filename>'''
-'''HEAD''' refers to the last command on the timeline we are on.
+```$ git reset HEAD <filename>```
+```HEAD``` refers to the last command on the timeline we are on.
 Reset an unstaged file that has been modified to the last state it was in before it was modified:
-'''$ git checkout -- <filename>'''
+```$ git checkout -- <filename>```
 Add AND commit any modified tracked files:
-'''$ git commit -a -m "commit message"'''
- This will not add any files that are not already being tracked.
- Undo last commit and move everything from the last commit back into staging:
- '''$ git reset --soft HEAD^'''
- Add files to last commit:
- '''$ git add <file>''' add the file you want to add to the last commmit and,
- '''$ git commit --amend -m "Modify readme and add file.txt."'''
- If we specify a new commit message it will overwrite our previous commit message.
- Completely undo last commit and all changes:
- '''$ git reset --hard HEAD^'''
- Undo last two commits and all changes:
- '''$ git reset --hard HEAD^^'''
- keep adding a '''^''' for each commit you want to blow away.
+```$ git commit -a -m "commit message"```
+This will not add any files that are not already being tracked.
+Undo last commit and move everything from the last commit back into staging:
+```$ git reset --soft HEAD^```
+Add files to last commit:
+```$ git add <file>``` add the file you want to add to the last commmit and,
+```$ git commit --amend -m "Modify readme and add file.txt."```
+If we specify a new commit message it will overwrite our previous commit message.
+Completely undo last commit and all changes:
+```$ git reset --hard HEAD^```
+Undo last two commits and all changes:
+```$ git reset --hard HEAD^^```
+keep adding a ```^``` for each commit you want to blow away.
