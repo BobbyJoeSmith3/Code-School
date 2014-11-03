@@ -244,3 +244,11 @@ We only scratched the surface of Git in this course. There is so much more you c
 **The Pro Git book**, by Scott Chacon, is an excellent resource to teach you the inner workings of Git.
 
 **help.github** and GitHub Training are also great for anything related to Git in general and using Git with GitHub.
+
+
+GIT REAL LEVEL 1
+================
+
+Background
+----------
+Github is a "Distributed Version Control System" (DVCS) created to help teams merge changes to a project, as well as create a timeline of changes to said project. Previously, teams used to transfer computer files using a File Transfer Protocol (FTP) to a central repository. This would cause programmers working on the same files to accidentally overwrite each others' code. Also, since all of the code was stored on a central repository, coders ran the risk of losing all of their work if the repository crashed or was deleted. In a DVSC setup, everyone gets a copy of the master repository on their own server, reducing the risk of losing everything in the repository if something were to happen to one of the repositories.
