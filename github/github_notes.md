@@ -515,3 +515,41 @@ To start collaborating, generally we will need to bring a copy of a remote repos
 
 When we need to work on a feature that will take some time, it's best to create a branch off of the master branch. Any changes, adds, and commits that occur on the new branch will not effect or show up on the master branch until we merge both branches. If changes were only made to the new branch and not the master branch, it is possible to do a "fast-forward" merge. However, when changes occur to the master branch and the new branch, git can't fast forward since changes were made in both branches. Instead, git will have to perform a recursive merge to merge both branches.
 
+
+Level 4 - Collaboration Basics
+
+###Concepts
+#####Situation 1:
+You want to push a commit to a remote repository but someone has made changes to the same remote repository you are working on, causing your local repository to no longer be up-to-date.
+
+#####Solution: 
+```git pull``` the changes from the remote repository, then ```git push``` your changes.
+
+When you pull from a remote repository to "Fetch" (or Sync) our local repository with the remote one, Fetch doesn't actually update any of our local code. Instead a branch called "origin/master" get's created off of the local master branch, and git merges origin/master with the remote master. After ```git pull``` fetches the remote repo and syncs it with the origin/master branch, ```git pull``` then does a recurssive merge of the origin/master branch with the local master branch. Since git is trying to do a merge with branches that have two difference commits, it will pop us straight into an editor (Vi) where we will have to create a merge commit. Once we save from the editor, we are going to get an output from the pull command that tells us that it did a recursive merge.
+
+At this point, the origin/master branch doesn't know about the local change we made to master, or the merge commit that was just performed. Origin/master will not know about it until we do a ```git push```. At that point, origin/master points to the same master (the remote master on github) branch and everything's been updated.
+
+Some people don't like using merge commits in this way because it pollutes the repo history, and would prefer to do "rebase".
+
+
+#####Situation 2:
+You want to push a commit to a remote repository but someone has pushed changes to the same file you are working on to the remote repository.
+
+#####Solution:
+```git pull``` the changes. Type in ```git status``` to see which files have both been modified. Go into file and you will see notation from github that looks like:
+
+```<<<<<<<<<<<<<< HEAD
+the cake is a lie.
+===================
+the cake is telling the truth!
+>>>>>>>>>>>>>>>>
+7e45847f8939dkkf9929388'''
+
+The portion above the line are your changes. The portion below the line are the other person's changes that were pushed to the remote repository. Choose which changes you want to go with and clean up the git notation. Then just commit the changes with ```$ git commit -a``` no need to leave a commit message since git will already provide pretty good commentary on what transpired. Then push to the remote repository.
+
+
+
+
+
+
+
