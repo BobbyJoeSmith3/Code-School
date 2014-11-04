@@ -425,7 +425,7 @@ To remove remotes:
 ```$ got remote rm <name>```
 
 
-#####Concepts
+###Concepts
 When we are editing our files, staging, and committing them, we are making the changes on our own local repository. To get these changes up to a repository that anyone else can access, we need to push and pull changes to a remote repository. When dealing with remote repositories, it is all about the ```git remote``` command.
 
 Git doesn't take care of access control for you, meaning, it doesn't allow you to specify who has access to the remote repository. In order to implement access control, some additional software is needed. If you want to use a hosted access control software, you can use Github or Bitbucket. If you want a self managed solution, you can use Gitosis or Gitorious. 
@@ -449,3 +449,69 @@ An example of pushing to a remote would be:
 ```$ git push -u origin master```
 
 Don't use any of the commands the roll back commits after you have pushed. You only want to do those before you've pushed, because if do so and then make the changes locally it's kind of like changing history, which is dangerous to do when working on a project.
+
+
+Level 3 - Cloning and Branching
+--------------------------------
+###Commands
+
+Clone a remote repository:
+
+```$ git clone <url of remote repository>```
+
+Cone a remote repository and rename the local file it will be cloned into:
+
+```$ git clone <url of remote repository> <folder name>```
+
+Create new branch:
+
+```$ git branch <name of branch>```
+
+Check which branch you are currently on:
+
+```$ git branch```
+
+Switch HEAD to new branch:
+
+```$ git checkout <name of branch>```
+
+Create a text file and write something in it:
+
+```$ echo "<message>" > <name of file>.txt```
+
+Merge branch:
+
+```$ git merge <name of branch>```
+
+Delete branch:
+
+```$ git branch -d <name of branch>```
+
+Create new feature branch and switch HEAD to that branch:
+
+```$ git checkout -b <branch name>```
+
+#####Vi Commands
+
+```j``` down
+
+```k``` up
+
+```h``` left
+
+```l``` right
+
+```ESC``` leave mode
+
+```i``` insert mode
+
+```:wq``` save and quit
+
+```:q!``` cancel and quit
+
+
+###Concepts
+To start collaborating, generally we will need to bring a copy of a remote repository onto our local server. To do this, we will clone the remote repository and download the entire repository into a local directory/repository.
+
+When we need to work on a feature that will take some time, it's best to create a branch off of the master branch. Any changes, adds, and commits that occur on the new branch will not effect or show up on the master branch until we merge both branches. If changes were only made to the new branch and not the master branch, it is possible to do a "fast-forward" merge. However, when changes occur to the master branch and the new branch, git can't fast forward since changes were made in both branches. Instead, git will have to perform a recursive merge to merge both branches.
+
