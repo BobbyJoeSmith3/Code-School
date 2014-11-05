@@ -547,7 +547,6 @@ the cake is telling the truth!
 
 The portion above the line are your changes. The portion below the line are the other person's changes that were pushed to the remote repository. Choose which changes you want to go with and clean up the git notation. Then just commit the changes with ```$ git commit -a``` no need to leave a commit message since git will already provide pretty good commentary on what transpired. Then push to the remote repository.
 
-Can I get a commit up in here?
 
 
 
